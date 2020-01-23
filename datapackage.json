@@ -1,55 +1,55 @@
 {
-  "name": "gasprices",
-  "title": "Getting gas prices by day and month",
-  "sources": [{
-    "title": "Henry Hub Natural Gas Spot Prices",
-    "path": "https://www.eia.gov/dnav/ng/hist/rngwhhdD.htm"
-  }],
-  "resources": [
-    {
-      "name": "Henry_Hub_Natural_Gas_Spot_Price",
-      "path": "Henry_Hub_Natural_Gas_Spot_Price.csv",
-      "format": "csv",
-      "mediatype": "text/csv",
-      "encoding": "ISO-8859-1"
-    },
-    {
-      "name": "gas_byday",
-      "path": "gas_byday.csv",
-      "format": "csv",
-      "mediatype": "text/csv",
-      "encoding": "ISO-8859-1",
-      "schema": {
-        "fields": [
-          {
-            "name": "Day",
-            "type": "string"
-          },
-          {
-            "name": "Day,Henry Hub Natural Gas Spot Price Dollars per Million Btu",
-            "type": "number"
-          }
-        ]
-      }
-    },
-    {
-      "name": "gas_bymonth.csv",
-      "path": "gas_bymonth.csv",
-      "format": "csv",
-      "mediatype": "text/csv",
-      "encoding": "ISO-8859-1",
-      "schema": {
-        "fields": [
-          {
-            "name": "Month",
-            "type": "string"
-          },
-          {
-            "name": "Day,Henry Hub Natural Gas Spot Price Dollars per Million Btu",
-            "type": "number"
-          }
-        ]
-      }
-    }
-  ]
+    "profile": "tabular-data-package",
+    "resources": [
+        {
+            "path": "gas_byday.csv",
+            "profile": "tabular-data-resource",
+            "name": "gas_byday",
+            "format": "csv",
+            "mediatype": "text/csv",
+            "encoding": "utf-8",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "date",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "value",
+                        "type": "number",
+                        "format": "default"
+                    }
+                ],
+                "missingValues": [
+                    ""
+                ]
+            }
+        },
+        {
+            "path": "gas_bymonth.csv",
+            "profile": "tabular-data-resource",
+            "name": "gas_bymonth",
+            "format": "csv",
+            "mediatype": "text/csv",
+            "encoding": "utf-8",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "date",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "value",
+                        "type": "number",
+                        "format": "default"
+                    }
+                ],
+                "missingValues": [
+                    ""
+                ]
+            }
+        }
+    ]
 }

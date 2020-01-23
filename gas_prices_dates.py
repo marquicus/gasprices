@@ -2,10 +2,10 @@ import argparse
 import pandas as pd
 
 
-def gas_prices(input, filetype="csv"):
+def gas_prices(input):
     """Getting gas prices by day and month
 
-    1. Read csv or excel (assuming extension csv is a true csv file format, it might be another validations in real scenario)
+    1. Read csv or excel (assuming extension csv is a true csv file format, it might be another validations in real scenario, in my experience I prefer to perform it at bash script level)
     1.1 Datetime Index is for month
     2. Write to csv
     3. Group and sum by colum Henry...
@@ -17,14 +17,14 @@ def gas_prices(input, filetype="csv"):
     if input[0].name.lower().endswith('.csv'):
         dfg = pd.read_csv(input[0], skiprows=4)
     else:
-        dfg = pd.read_excel(input[0], skiprows=4)
+        dfg = pd.read_excel(input[0], skiprows=3, sheet_name='Data 1')
     dfg.index = pd.to_datetime(dfg["Day"], format='%m/%d/%Y')
-    dfg.to_csv('gas_byday.csv', index=False)
+    dfg.to_csv('gas_byday.csv', header=["date", "value"], index=False)
 
     print("Getting monthly prices")
     dfg_month = dfg['Henry Hub Natural Gas Spot Price Dollars per Million Btu'].resample('M').sum()
     df = pd.DataFrame(dfg_month, index=dfg_month.index.strftime("%d/%m/%Y"))
-    df.to_csv('gas_bymonth.csv', index=True)
+    df.to_csv('gas_bymonth.csv', header=["value"], index_label="date", index=True)
 
     print("Done")
 
