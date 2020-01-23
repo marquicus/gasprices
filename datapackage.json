@@ -18,14 +18,38 @@
       "path": "gas_byday.csv",
       "format": "csv",
       "mediatype": "text/csv",
-      "encoding": "ISO-8859-1"
+      "encoding": "ISO-8859-1",
+      "schema": {
+        "fields": [
+          {
+            "name": "Day",
+            "type": "string"
+          },
+          {
+            "name": "Day,Henry Hub Natural Gas Spot Price Dollars per Million Btu",
+            "type": "number"
+          }
+        ]
+      }
     },
     {
       "name": "gas_bymonth.csv",
       "path": "gas_bymonth.csv",
       "format": "csv",
       "mediatype": "text/csv",
-      "encoding": "ISO-8859-1"
+      "encoding": "ISO-8859-1",
+      "schema": {
+        "fields": [
+          {
+            "name": "Month",
+            "type": "string"
+          },
+          {
+            "name": "Day,Henry Hub Natural Gas Spot Price Dollars per Million Btu",
+            "type": "number"
+          }
+        ]
+      }
     }
   ]
 }
